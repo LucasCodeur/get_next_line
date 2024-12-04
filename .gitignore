@@ -2,4 +2,4 @@
 *.out
 *.a
 ./vscode
-
+*.gch
