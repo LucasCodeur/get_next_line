@@ -16,7 +16,7 @@
 
 int		ft_strrchr(char *s, int c);
 int		ft_strchr(char *s, int c);
-char    *ft_strjoin(char *buffer, char *dest, char c);
+char    *ft_strjoin(char *buffer, char *result, char c);
 size_t  ft_strlen(char *str, char c);
 void    *ft_calloc(size_t nmemb, size_t size);
 char    *get_next_line(int fd);

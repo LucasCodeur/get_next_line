@@ -42,24 +42,24 @@ int	ft_strchr(char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *buffer, char *dest, char c)
+char	*ft_strjoin(char *buffer, char *result, char c)
 {
 	char	*temp;
 	size_t	size;
 	int		i;
 	int		j;
 
-	size = ft_strlen(buffer, '\n') + ft_strlen(dest, '\0') + 1;
+	size = ft_strlen(buffer, '\n') + ft_strlen(result, '\0') + 1;
 	temp = (char *)ft_calloc(size, sizeof(char));
 	if (!temp)
 		return (NULL);
 	i = 0;
 	j = 0;
-	if (dest)
+	if (result)
 	{
-		while (dest[i])
+		while (result[i])
         {
-			temp[i] = dest[i];
+			temp[i] = result[i];
 			i++;
         }
 	}
@@ -70,27 +70,27 @@ char	*ft_strjoin(char *buffer, char *dest, char c)
 	}
 	if (buffer[j] == c)
 		temp[i + j] = c;
-	free(dest);
+	free(result);
 	return (temp);
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char	*dest;
+	unsigned char	*result;
 	size_t			i;
 
 	if (!size && nmemb > SIZE_MAX / size)
 		return (NULL);
 	if (nmemb == 0 || size == 0)
 		return (malloc(0));
-	dest = malloc(nmemb * size);
-	if (!dest)
+	result = malloc(nmemb * size);
+	if (!result)
 		return (NULL);
 	i = 0;
 	while (i < nmemb * size)
 	{
-		dest[i] = 0;
+		result[i] = 0;
 		i++;
 	}
-	return ((void *)dest);
+	return ((void *)result);
 }

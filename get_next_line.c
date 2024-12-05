@@ -5,7 +5,7 @@ char	*get_left(char *buffer, size_t size)
 	char	*temp;
 	size_t	j;
 
-	temp = malloc((BUFFER_SIZE + ft_strrchr(buffer + size, '\n') + 1) * sizeof(char));
+	temp = malloc((BUFFER_SIZE + ft_strchr(buffer + size, '\n') + 1) * sizeof(char));
 	if (!temp)
 		return (NULL);
 	j = 0;
@@ -30,7 +30,7 @@ char	*read_file(int fd, char *buffer)
 	result = NULL;
 	if (buffer[0] != '\0')
 		result = ft_strjoin(buffer, result, '\n');
-	if (ft_strchr(result, '\n'))
+	if (ft_strrchr(result, '\n'))
 		return (result);
 	while (nb_read != 0)
 	{
@@ -48,8 +48,6 @@ char	*read_file(int fd, char *buffer)
 	if (buffer[0] == '\0' && nb_read == 0)
 	{
 		free (result);
-		// printf("COUCOU2");
-		// printf("%spatate", buffer);
 		free(buffer);
 		buffer = NULL;
 		return (NULL);
@@ -68,13 +66,10 @@ char    *get_next_line(int fd)
 		if (buffer == NULL)
 			buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
         if (!buffer)
-                return (NULL);
+            return (NULL);
         line = read_file(fd, buffer);
 		if (line == NULL)
-		{
-			// printf("COUCOU");
 			return (line);
-		}
 		buffer = get_left(buffer, ft_strlen(buffer, '\n'));
 		return (line);
 }
